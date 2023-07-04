@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rishabh SONI</title>
+    <link rel="icon" href="image.png" type="image/x-icon">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function BusinessCardPopup({ onClose }) {
+            return (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <h2>Contact Information</h2>
+                        <p>Name: Rishabh SONI</p>
+                        <p>Github: https://github.com/Pario398</p>
+                        <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
+                        <button onClick={onClose}>Close</button>
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            const currentYear = new Date().getFullYear();
+            const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+
+            const handleLinkClick = (url) => {
+                window.location.href = url;
+            };
+
+            const handleContactClick = () => {
+                setIsPopupOpen(true);
+            };
+
+            const handleClosePopup = () => {
+                setIsPopupOpen(false);
+            };
+
+
+            React.useEffect(() => {
+                function handleScroll() {
+                    const backToTopButton = document.getElementById('backToTopBtn');
+                    if (window.pageYOffset > 100) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                }
+
+                window.addEventListener('scroll', handleScroll);
+
+                return () => {
+                    window.removeEventListener('scroll', handleScroll);
+                };
+            }, []);
+
+            return (
+                <div className="container">
+                    <header>
+                        <nav className="navbar">
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                                <li>
+                                    <a href="project.html">Projects</a>
+                                </li>
+                                <li>
+                                    <a onClick={handleContactClick}>Contact</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                        <span>
+                            <a href="https://github.com/Pario398" id="githublink"><img src="github (2).svg" alt="Github" /></a>
+                            <span>
+                                <a href="https://www.linkedin.com/in/rishabh-soni-a8b421232/" id="linkedin"><img src="linkedin.svg" alt="linkedin" /></a>
+                            </span>
+                        </span>
+                    </header>
+                    <h1>Welcome to My Personal Website</h1>
+                    <p>
+                        Hello! I'm Rishabh Soni, and this is my portfolio where I showcase my projects and skills. I am currently a university student at the University of Kent studying Computer Science.
+                    </p>
+                    <h2>Tools</h2>
+                    <p>These are the tools I have experience with:</p>
+                    <ul className="flex-list">
+                        <li onClick={() => handleLinkClick("https://code.visualstudio.com/")}>
+                            <img src="vscode.svg" alt="VS Code" />
+                            <a href="https://code.visualstudio.com/">   VS Code</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.jetbrains.com/idea/")}>
+                            <img src="intellij.svg" alt="IntelliJ IDEA" />
+                            <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.notion.so/")}>
+                            <img src="notion.svg" alt="Notion" />
+                            <a href="https://www.notion.so/">Notion</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://github.com/")}>
+                            <img src="github.svg" alt="GitHub" />
+                            <a href="https://github.com/">GitHub</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://about.gitlab.com/")}>
+                            <img src="gitlab.svg" alt="GitLab" />
+                            <a href="https://about.gitlab.com/">GitLab</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://git-scm.com/")}>
+                            <img src="Git-Icon-White.svg" alt="Git" />
+                            <a href="https://git-scm.com/">Git</a>
+                        </li>
+                    </ul>
+                    <h2>Languages</h2>
+                    <p>I'm proficient in the following languages:</p>
+                    <ul className="flex-list">
+                        <li onClick={() => handleLinkClick("https://www.oracle.com/java/")}>
+                            <img src="java.svg" alt="Java" />
+                            <a href="https://www.oracle.com/java/">Java</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.python.org/")}>
+                            <img src="python.svg" alt="Python" />
+                            <a href="https://www.python.org/">Python</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.php.net/")}>
+                            <img src="php.svg" alt="PHP" />
+                            <a href="https://www.php.net/">PHP</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.haskell.org/")}>
+                            <img src="haskell.svg" alt="Haskell" />
+                            <a href="https://www.haskell.org/">Haskell</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.mysql.com/")}>
+                            <img src="mysql.svg" alt="SQL" />
+                            <a href="https://www.mysql.com/">SQL</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.mongodb.com/")}>
+                            <img src="mongodb.svg" alt="NoSQL" />
+                            <a href="https://www.mongodb.com/">NoSQL (MongoDB)</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
+                            <img src="html.svg" alt="HTML" />
+                            <a href="https://www.w3.org/standards/webdesign/htmlcss">HTML</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
+                            <img src="css.svg" alt="CSS" />
+                            <a href="https://www.w3.org/standards/webdesign/htmlcss">CSS</a>
+                        </li>
+                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
+                            <img src="javascript.svg" alt="JavaScript" />
+                            <a href="https://www.w3.org/standards/webdesign/htmlcss">JavaScript</a>
+                        </li>
+
+                        <li onClick={() => handleLinkClick("https://react.dev/")}>
+                            <img src="react.svg" alt="Git" />
+                            <a href="https://react.dev/">React</a>
+                        </li>
+                    </ul>
+                    <h2>Interests</h2>
+                    <p>
+                        I am very passionate about AI (Artificial Intelligence) and Data Science. These are two exciting and rapidly evolving fields that have a lot of potential and impact. I enjoy working on projects that involve building intelligent systems, analyzing data, and creating innovative solutions. I am always eager to learn new skills and techniques that can help me achieve my goals and deliver value.
+                    </p>
+
+                    <button id="backToTopBtn" onClick={scrollToTop}>Back to Top</button>
+
+                    <footer>&copy; {currentYear} Rishabh Soni.</footer>
+                    {isPopupOpen && <BusinessCardPopup onClose={handleClosePopup} />}
+
+                </div>
+
+
+            );
+        }
+
+        ReactDOM.render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>

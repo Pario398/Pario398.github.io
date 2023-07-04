@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Projects | Rishabh SONI</title>
+    <link rel="icon" href="image.png" type="image/x-icon">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        function BusinessCardPopup({ onClose }) {
+            return (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <h2>Contact Information</h2>
+                        <p>Name: Rishabh SONI</p>
+                        <p>Github: https://github.com/Pario398</p>
+                        <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
+                        <button onClick={onClose}>Close</button>
+                    </div>
+                </div>
+            );
+        }
+        function ProjectCard({ title, description, link }) {
+            const handleLinkClick = () => {
+                window.location.href = link;
+            };
+
+            return (
+                <li onClick={handleLinkClick}>
+                    <h2>{title}</h2>
+                    <p>{description}</p>
+                </li>
+            );
+        }
+
+        function App() {
+            const currentYear = new Date().getFullYear();
+            const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+            const handleLinkClick = (url) => {
+                window.location.href = url;
+            };
+
+            const handleContactClick = () => {
+                setIsPopupOpen(true);
+            };
+
+            const handleClosePopup = () => {
+                setIsPopupOpen(false);
+            };
+            const projects = [
+                {
+                    title: "Under Works",
+                    description: "This part is under works, will be updated soon",
+                    link: ""
+                }
+                // {
+                //     title: "Project 1",
+                //     description: "This is the first project.",
+                //     link: "https://example.com/project1"
+                // },
+                // {
+                //     title: "Project 2",
+                //     description: "This is the second project.",
+                //     link: "https://example.com/project2"
+                // },
+                // {
+                //     title: "Project 3",
+                //     description: "This is the third project.",
+                //     link: "https://example.com/project3"
+                // }
+                // Add more projects as needed
+            ];
+
+            React.useEffect(() => {
+                function handleScroll() {
+                    const backToTopButton = document.getElementById('backToTopBtn');
+                    if (window.pageYOffset > 100) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                }
+
+                window.addEventListener('scroll', handleScroll);
+
+                return () => {
+                    window.removeEventListener('scroll', handleScroll);
+                };
+            }, []);
+
+            return (
+                <div className="container">
+                    <header>
+                        <nav className="navbar">
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                                <li>
+                                    <a href="project.html">Projects</a>
+                                </li>
+                                <li>
+                                    <a onClick={handleContactClick}>Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <span>
+                            <a href="https://github.com/Pario398" id="githublink"><img src="github (2).svg" alt="Github" /></a>
+                            <span>
+                                <a href="https://www.linkedin.com/in/rishabh-soni-a8b421232/" id="linkedin"><img src="linkedin.svg" alt="linkedin" /></a>
+                            </span>
+                        </span>
+                    </header>
+                    <h1>Projects</h1>
+                    <ul className="flex-list">
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={index}
+                                title={project.title}
+                                description={project.description}
+                                link={project.link}
+                            />
+                        ))}
+                    </ul>
+                    <br></br>
+                    <button id="backToTopBtn" onClick={scrollToTop}>Back to Top</button>
+                    <footer>&copy; {currentYear} Rishabh Soni.</footer>
+                    {isPopupOpen && <BusinessCardPopup onClose={handleClosePopup} />}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
