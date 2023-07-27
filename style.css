@@ -210,3 +210,11 @@ footer {
 .popup-content a:hover {
     color: #bf0d1c; /
 }
+.social-links {
+    display: flex;
+    gap: 10px; 
+}
+
+.social-link {
+    display: inline-block;
+}
