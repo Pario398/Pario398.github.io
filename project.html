@@ -20,19 +20,7 @@
                 behavior: 'smooth'
             });
         }
-        // function BusinessCardPopup({ onClose }) {
-        //     return (
-        //         <div className="popup-overlay">
-        //             <div className="popup-content">
-        //                 <h2>Contact Information</h2>
-        //                 <p>Name: Rishabh SONI</p>
-        //                 <p>Github: https://github.com/Pario398</p>
-        //                 <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
-        //                 <button onClick={onClose}>Close</button>
-        //             </div>
-        //         </div>
-        //     );
-        // }
+
         function ProjectCard({ title, description, link }) {
             const handleLinkClick = () => {
                 window.location.href = link;
@@ -49,6 +37,7 @@
         function App() {
             const currentYear = new Date().getFullYear();
             const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+            const [searchTerm, setSearchTerm] = React.useState('');
             const handleLinkClick = (url) => {
                 window.location.href = url;
             };
@@ -60,6 +49,7 @@
             const handleClosePopup = () => {
                 setIsPopupOpen(false);
             };
+
             const projects = [
                 {
                     title: "Tic-Tac-Toe Bot",
@@ -98,6 +88,20 @@
                     link: "https://github.com/Pario398/Speed-typing"
                 }
             ];
+
+            const filteredProjects = projects.filter((project) =>
+                project.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            const handleSearch = () => {
+                setSearchTerm(searchTerm);
+            };
+
+            const handleKeyPress = (e) => {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            };
 
             React.useEffect(() => {
                 function handleScroll() {
@@ -142,8 +146,18 @@
                         </div>
                     </header>
                     <h1>Projects</h1>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Search projects"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                        />
+                        <button onClick={handleSearch}>Search</button>
+                    </div>
                     <ul className="flex-list">
-                        {projects.map((project, index) => (
+                        {filteredProjects.map((project, index) => (
                             <ProjectCard
                                 key={index}
                                 title={project.title}
