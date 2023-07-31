@@ -20,21 +20,19 @@
                 behavior: 'smooth'
             });
         }
-
-        function BusinessCardPopup({ onClose }) {
-            return (
-                <div className="popup-overlay">
-                    <div className="popup-content">
-                        <h2>Contact Information</h2>
-                        <p>Name: Rishabh SONI</p>
-                        <p>Github: https://github.com/Pario398</p>
-                        <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
-                        <button onClick={onClose}>Close</button>
-                    </div>
-                </div>
-            );
-        }
-
+        // function BusinessCardPopup({ onClose }) {
+        //     return (
+        //         <div className="popup-overlay">
+        //             <div className="popup-content">
+        //                 <h2>Contact Information</h2>
+        //                 <p>Name: Rishabh SONI</p>
+        //                 <p>Github: https://github.com/Pario398</p>
+        //                 <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
+        //                 <button onClick={onClose}>Close</button>
+        //             </div>
+        //         </div>
+        //     );
+        // }
         function App() {
             const currentYear = new Date().getFullYear();
             const [isPopupOpen, setIsPopupOpen] = React.useState(false);
@@ -83,10 +81,6 @@
                                 <li>
                                     <a href="project.html">Projects</a>
                                 </li>
-                                <li>
-                                    <a onClick={handleContactClick}>Contact</a>
-                                </li>
-
                             </ul>
                         </nav>
                         <div class="social-links">
