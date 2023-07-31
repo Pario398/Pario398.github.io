@@ -146,16 +146,18 @@
                         </div>
                     </header>
                     <h1>Projects</h1>
-                    <div>
+                    <div class="search-container">
                         <input
                             type="text"
-                            placeholder="Search projects"
+                            placeholder="Search projects..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             onKeyPress={handleKeyPress}
+                            class="search-input"
                         />
-                        <button onClick={handleSearch}>Search</button>
+                        <button onClick={handleSearch} class="search-button">Search</button>
                     </div>
+
                     <ul className="flex-list">
                         {filteredProjects.map((project, index) => (
                             <ProjectCard
