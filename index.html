@@ -20,19 +20,7 @@
                 behavior: 'smooth'
             });
         }
-        // function BusinessCardPopup({ onClose }) {
-        //     return (
-        //         <div className="popup-overlay">
-        //             <div className="popup-content">
-        //                 <h2>Contact Information</h2>
-        //                 <p>Name: Rishabh SONI</p>
-        //                 <p>Github: https://github.com/Pario398</p>
-        //                 <p>Linkedin: https://www.linkedin.com/in/rishabh-soni-a8b421232/</p>
-        //                 <button onClick={onClose}>Close</button>
-        //             </div>
-        //         </div>
-        //     );
-        // }
+
         function App() {
             const currentYear = new Date().getFullYear();
             const [isPopupOpen, setIsPopupOpen] = React.useState(false);
@@ -49,7 +37,6 @@
                 setIsPopupOpen(false);
             };
 
-
             React.useEffect(() => {
                 function handleScroll() {
                     const backToTopButton = document.getElementById('backToTopBtn');
@@ -61,7 +48,6 @@
                 }
 
                 window.addEventListener('scroll', handleScroll);
-
                 return () => {
                     window.removeEventListener('scroll', handleScroll);
                 };
@@ -72,139 +58,234 @@
                     <header>
                         <nav className="navbar">
                             <ul>
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <a href="about.html">About</a>
-                                </li>
-                                <li>
-                                    <a href="project.html">Projects</a>
-                                </li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="project.html">Projects</a></li>
                             </ul>
                         </nav>
-                        <div class="social-links">
-                            <div class="social-link">
+                        <div className="social-links">
+                            <div className="social-link">
                                 <a href="https://github.com/Pario398" id="githublink"><img src="github (2).svg" alt="Github" /></a>
                             </div>
-                            <div class="social-link">
+                            <div className="social-link">
                                 <a href="https://www.linkedin.com/in/rishabh-soni-a8b421232/" id="linkedin"><img src="linkedin.svg" alt="linkedin" /></a>
                             </div>
                         </div>
                     </header>
-                    <h1>Welcome to My Personal Website</h1>
-                    <p>
-                        Hello! I'm Rishabh Soni, a Computer Science graduate from the University of Kent with First Class Honours. 
-                    </p>
-                    <p>I'm passionate about artificial intelligence, machine learning, and data-driven development.</p>
 
-                    <p>
-                        I've worked on projects like a stock prediction app and a brain tumor classification model using deep learning. 
-                        I also gained industry experience as a data analyst at Abbott Laboratories, working with sensor data and dashboards.
-                    </p>
+                    {/* Hero Section */}
+                    <div className="hero">
+                        <h1 className="hero-title">Hi, I'm Rishabh Soni</h1>
+                        <p className="hero-subtitle">Computer Science Graduate | Data Analyst | Developer</p>
+                    </div>
 
-                    <p>
-                        I enjoy hackathons, coding challenges, and building intelligent systems that solve real-world problems. 
-                        Thanks for visiting my website!
-                    </p>
+                    {/* Intro Section */}
+                    <section className="fade-in-section" style={{ animationDelay: "0.8s" }}>
+                        <p>Hello! I'm Rishabh Soni, a Computer Science graduate from the University of Kent with First Class Honours.</p>
+                        <p>I'm passionate about artificial intelligence, machine learning, and data-driven development.</p>
+                        <p>I've worked on projects like a stock prediction app and a brain tumor classification model using deep learning. I also gained industry experience as a data analyst at Abbott Laboratories, working with sensor data and dashboards.</p>
+                        <p>I enjoy hackathons, coding challenges, and building intelligent systems that solve real-world problems. Thanks for visiting my website!</p>
+                    </section>
+                    {/* Tools Section */}
+                    <section
+                        className="fade-in-section"
+                        style={{ animationDelay: "1s", textAlign: "center" }}
+                    >
+                        <h2>Tools</h2>
+                        <p>These are the tools I have experience with:</p>
+                        <ul
+                            className="flex-list"
+                            style={{
+                                display: "inline-flex",
+                                justifyContent: "center",
+                                padding: 0,
+                                listStyle: "none",
+                                gap: "20px",
+                                flexWrap: "wrap",
+                            }}
+                        >
+                            <li
+                                onClick={() => handleLinkClick("https://code.visualstudio.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="vscode.svg" alt="VS Code" />
+                                <a href="https://code.visualstudio.com/">VS Code</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.jetbrains.com/idea/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="intellij.svg" alt="IntelliJ IDEA" />
+                                <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.notion.so/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="notion.svg" alt="Notion" />
+                                <a href="https://www.notion.so/">Notion</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://github.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="github.svg" alt="GitHub" />
+                                <a href="https://github.com/">GitHub</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://about.gitlab.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="gitlab.svg" alt="GitLab" />
+                                <a href="https://about.gitlab.com/">GitLab</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://react.dev/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="react.svg" alt="React" />
+                                <a href="https://react.dev/">React</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.tensorflow.org/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="tensorflow.svg" alt="Tensorflow" />
+                                <a href="https://www.tensorflow.org/">Tensorflow</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://git-scm.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="Git-Icon-White.svg" alt="Git" />
+                                <a href="https://git-scm.com/">Git</a>
+                            </li>
+                        </ul>
+                    </section>
 
-                    <h2>Tools</h2>
-                    <p>These are the tools I have experience with:</p>
-                    <ul className="flex-list">
-                        <li onClick={() => handleLinkClick("https://code.visualstudio.com/")}>
-                            <img src="vscode.svg" alt="VS Code" />
-                            <a href="https://code.visualstudio.com/">VS Code</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.jetbrains.com/idea/")}>
-                            <img src="intellij.svg" alt="IntelliJ IDEA" />
-                            <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.notion.so/")}>
-                            <img src="notion.svg" alt="Notion" />
-                            <a href="https://www.notion.so/">Notion</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://github.com/")}>
-                            <img src="github.svg" alt="GitHub" />
-                            <a href="https://github.com/">GitHub</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://about.gitlab.com/")}>
-                            <img src="gitlab.svg" alt="GitLab" />
-                            <a href="https://about.gitlab.com/">GitLab</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://react.dev/")}>
-                            <img src="react.svg" alt="Git" />
-                            <a href="https://react.dev/">React</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.tensorflow.org/")}>
-                            <img src="tensorflow.svg" alt="Tensorflow" />
-                            <a href="https://www.tensorflow.org/">Tensorflow</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://git-scm.com/")}>
-                            <img src="Git-Icon-White.svg" alt="Git" />
-                            <a href="https://git-scm.com/">Git</a>
-                        </li>
-                    </ul>
-                    <h2>Coding Languages</h2>
-                    <p>I'm proficient in the following languages:</p>
-                    <ul className="flex-list">
-                        <li onClick={() => handleLinkClick("https://www.oracle.com/java/")}>
-                            <img src="java.svg" alt="Java" />
-                            <a href="https://www.oracle.com/java/">Java</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.python.org/")}>
-                            <img src="python.svg" alt="Python" />
-                            <a href="https://www.python.org/">Python</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.php.net/")}>
-                            <img src="php.svg" alt="PHP" />
-                            <a href="https://www.php.net/">PHP</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.haskell.org/")}>
-                            <img src="haskell.svg" alt="Haskell" />
-                            <a href="https://www.haskell.org/">Haskell</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
-                            <img src="html.svg" alt="HTML" />
-                            <a href="https://www.w3.org/standards/webdesign/htmlcss">HTML</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
-                            <img src="css.svg" alt="CSS" />
-                            <a href="https://www.w3.org/standards/webdesign/htmlcss">CSS</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}>
-                            <img src="javascript.svg" alt="JavaScript" />
-                            <a href="https://www.w3.org/standards/webdesign/htmlcss">JavaScript</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.sas.com/en_gb/training/courses/sas-programming.html")}>
-                            <img src="SAS_logo_horiz.svg" alt="SAS" />
-                            <a href="https://www.sas.com/en_gb/training/courses/sas-programming.html">SAS</a>
-                        </li>
-                    </ul>
-                    <h2>Databases:</h2>
-                    <p>These are the databases I have experience with:</p>
-                    <ul className="flex-list">
-                        <li onClick={() => handleLinkClick("https://www.mysql.com/")}>
-                            <img src="mysql.svg" alt="MYSQL" />
-                            <a href="https://www.mysql.com/">MySQL</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.postgresql.org/")}>
-                            <img src="postgresql.svg" alt="postgresql" />
-                            <a href="https://www.postgresql.org/">Postgresql</a>
-                        </li>
-                        <li onClick={() => handleLinkClick("https://www.mongodb.com/")}>
-                            <img src="mongodb.svg" alt="NoSQL" />
-                            <a href="https://www.mongodb.com/">NoSQL (MongoDB)</a>
-                        </li>
-                    </ul>
-                    <br></br>
+                    {/* Coding Languages Section */}
+                    <section
+                        className="fade-in-section"
+                        style={{ animationDelay: "1.2s", textAlign: "center" }}
+                    >
+                        <h2>Coding Languages</h2>
+                        <p>I'm proficient in the following languages:</p>
+                        <ul
+                            className="flex-list"
+                            style={{
+                                display: "inline-flex",
+                                justifyContent: "center",
+                                padding: 0,
+                                listStyle: "none",
+                                gap: "20px",
+                                flexWrap: "wrap",
+                            }}
+                        >
+                            <li
+                                onClick={() => handleLinkClick("https://www.oracle.com/java/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="java.svg" alt="Java" />
+                                <a href="https://www.oracle.com/java/">Java</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.python.org/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="python.svg" alt="Python" />
+                                <a href="https://www.python.org/">Python</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.php.net/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="php.svg" alt="PHP" />
+                                <a href="https://www.php.net/">PHP</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.haskell.org/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="haskell.svg" alt="Haskell" />
+                                <a href="https://www.haskell.org/">Haskell</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="html.svg" alt="HTML" />
+                                <a href="https://www.w3.org/standards/webdesign/htmlcss">HTML</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="css.svg" alt="CSS" />
+                                <a href="https://www.w3.org/standards/webdesign/htmlcss">CSS</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.w3.org/standards/webdesign/htmlcss")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="javascript.svg" alt="JavaScript" />
+                                <a href="https://www.w3.org/standards/webdesign/htmlcss">JavaScript</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.sas.com/en_gb/training/courses/sas-programming.html")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="SAS_logo_horiz.svg" alt="SAS" />
+                                <a href="https://www.sas.com/en_gb/training/courses/sas-programming.html">SAS</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    {/* Databases Section */}
+                    <section
+                        className="fade-in-section"
+                        style={{ animationDelay: "1.4s", textAlign: "center" }}
+                    >
+                        <h2>Databases:</h2>
+                        <p>These are the databases I have experience with:</p>
+                        <ul
+                            className="flex-list"
+                            style={{
+                                display: "inline-flex",
+                                justifyContent: "center",
+                                padding: 0,
+                                listStyle: "none",
+                                gap: "20px", // optional spacing between items
+                            }}
+                        >
+                            <li
+                                onClick={() => handleLinkClick("https://www.mysql.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="mysql.svg" alt="MYSQL" />
+                                <a href="https://www.mysql.com/">MySQL</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.postgresql.org/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="postgresql.svg" alt="PostgreSQL" />
+                                <a href="https://www.postgresql.org/">PostgreSQL</a>
+                            </li>
+                            <li
+                                onClick={() => handleLinkClick("https://www.mongodb.com/")}
+                                style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer" }}
+                            >
+                                <img src="mongodb.svg" alt="MongoDB" />
+                                <a href="https://www.mongodb.com/">NoSQL</a>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                    <br />
                     <button id="backToTopBtn" onClick={scrollToTop}>Back to Top</button>
-
                     <footer>&copy; {currentYear} Rishabh Soni.</footer>
-                    {isPopupOpen && <BusinessCardPopup onClose={handleClosePopup} />}
-
                 </div>
-
-
             );
         }
 
